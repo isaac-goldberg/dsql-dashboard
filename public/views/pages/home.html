@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+{{block "header" .}}{{end}}
+
+<body>
+    <div class="text-center">
+        <h1 class="display-3 mt-5">DSQL</h1>
+
+        {{if .User.UserId}}
+        <p>username: {{.User.Username}}</p>
+        {{else}}
+        <a href="/login"></a>
+        {{end}}
+    </div>
+</body>
+
+</html>
