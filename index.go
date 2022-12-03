@@ -12,6 +12,7 @@ import (
 	"github.com/isaac-goldberg/dsql-dashboard/globals"
 	"github.com/isaac-goldberg/dsql-dashboard/middleware"
 	"github.com/isaac-goldberg/dsql-dashboard/routes"
+	"github.com/isaac-goldberg/dsql-dashboard/utils"
 )
 
 func main() {
@@ -19,8 +20,9 @@ func main() {
 	godotenv.Load()
 
 	// handle asset routes
-	cssHandler := http.FileServer(http.Dir("./public/assets/css/"))
-	http.Handle("/css/", http.StripPrefix("/css/", cssHandler))
+	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./public/assets/js/"))))
+	http.Handle("/fonts/", http.StripPrefix("/fonts/", http.FileServer(http.Dir("./public/assets/fonts/"))))
+	http.Handle("/css/", utils.NoCache(http.StripPrefix("/css/", http.FileServer(http.Dir("./public/assets/css/")))))
 
 	// gorilla mux router
 	muxRouter := mux.NewRouter()

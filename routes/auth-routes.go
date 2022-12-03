@@ -6,14 +6,17 @@ import (
 	"net/url"
 	"os"
 
+	"github.com/gorilla/context"
 	"github.com/gorilla/mux"
 
 	"github.com/isaac-goldberg/dsql-dashboard/sessions"
+	"github.com/isaac-goldberg/dsql-dashboard/typings"
 	"github.com/isaac-goldberg/dsql-dashboard/utils"
 )
 
 func AddAuthRoutesHandler(router *mux.Router) {
 	router.HandleFunc("/login", loginRouter)
+	router.HandleFunc("/logout", logoutRouter)
 	router.HandleFunc("/auth", authRouter)
 }
 
@@ -37,6 +40,22 @@ func authRouter(w http.ResponseWriter, r *http.Request) {
 		sessions.SaveUserMap(w, accessToken, refreshToken, userMap)
 		utils.SetTokensAndIdCookies(w, userMap["id"].(string), accessToken, refreshToken)
 	}
+
+	http.Redirect(w, r, "/", http.StatusPermanentRedirect)
+}
+
+func logoutRouter(w http.ResponseWriter, r *http.Request) {
+	user := context.Get(r, typings.UserData{})
+
+	if user != nil {
+		u := user.(typings.UserData)
+		session := sessions.Get(u.UserId)
+		if session.User.UserId != "" {
+			sessions.Delete(u.UserId)
+		}
+	}
+
+	utils.DeleteTokenAndIdCookies(w)
 
 	http.Redirect(w, r, "/", http.StatusPermanentRedirect)
 }

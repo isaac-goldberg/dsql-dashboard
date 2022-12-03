@@ -1,7 +1,38 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter");
+@font-face {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(/fonts/Inter-bold.woff2) format("woff2");
+}
+
+@font-face {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/fonts/Inter-bold.woff2) format("woff2");
+}
+
+:root {
+    --theme-primary: #5865F2;
+    --theme-primary-dark: #584ac7;
+    --theme-primary-light: #8892fc;
+    --theme-danger: #ED4245;
+
+    --theme-bg-primary: #14111C;
+    --theme-bg-secondary: #332c47;
+    --theme-bg-primary-gradient-accent: #1f234f;
+    --theme-bg-primary-outline: #33323D;
+
+    --theme-text-primary: white;
+    --theme-text-secondary: #999;
+
+    --theme-font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
 
 body {
-    background-color: #333 !important;
-    color: #eee !important;
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";;
+    background: linear-gradient(to right, var(--theme-bg-primary), var(--theme-bg-primary-gradient-accent)) !important;
+    color: var(--theme-text-primary) !important;
+    font-family: var(--theme-font) !important;
 }

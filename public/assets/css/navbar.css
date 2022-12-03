@@ -1,0 +1,105 @@
+.navbar {
+    height: 50px;
+    margin: 0 50px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: 700px;
+    color: white;
+}
+
+.navbar-link {
+    color: #aaa;
+    transition: 0.15s ease;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.navbar-link.top {
+    margin-right: 30px;
+}
+
+.navbar-link:hover {
+    color: white;
+}
+
+.navbar .profile {
+    display: inline-block;
+}
+
+.navbar .profile .profile-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar .profile .profile-container .profile-image {
+    height: 40px;
+    width: auto;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: 0.2s ease;
+}
+
+.navbar .profile .profile-container:hover .profile-image,
+.navbar .profile .profile-container.open .profile-image {
+    border-radius: 40%;
+}
+
+.navbar .profile .profile-container:hover .profile-username,
+.navbar .profile .profile-container.open .profile-username {
+    color: white;
+}
+
+.navbar .profile .profile-menu {
+    position: absolute;
+    width: 150px;
+    background-color: var(--theme-bg-primary);
+    border: 1px solid var(--theme-bg-primary-outline);
+    border-radius: 10px;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.navbar .profile .profile-menu:not(.open) {
+    opacity: 0;
+    transform: translateY(5px) translateX(-25px);
+}
+
+.navbar .profile .profile-menu.open {
+    opacity: 1;
+    transform: translateY(0px) translateX(-25px);
+}
+
+.navbar .profile .profile-menu hr {
+    width: 100%;
+    border-color: black !important;
+}
+
+.navbar .profile .profile-menu .profile-item {
+    user-select: none;
+    -webkit-user-select: none;
+    width: 100%;
+    padding: 10px 5px;
+    border-radius: 10px;
+    transition: 0.075s ease;
+}
+
+.navbar .profile .profile-menu .profile-item:hover {
+    background-color: var(--theme-bg-secondary);
+}
+.navbar .profile .profile-menu .profile-item.danger {
+    color: var(--theme-danger);
+}

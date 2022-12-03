@@ -1,0 +1,45 @@
+{{define "navbar"}}
+
+<link rel="stylesheet" href="/css/navbar.css">
+<script src="/js/navbar-dropdown.js" defer></script>
+<div class="navbar" style="margin: 0 50px;">
+    <a href="/" class="navbar-brand">DSQL</a>
+
+    <div class="navbar-right">
+        <a href="/commands" class="navbar-link top">Commands</a>
+        <a href="/support" class="navbar-link top">Support</a>
+        <div class="profile">
+            <div id="profile-container" class="profile-container">
+                {{if .User.UserId}}
+                <img class="profile-image" src={{ .User.IconURL }}>
+                <p class="profile-username navbar-link">
+                    {{ .User.Username }}
+                    <i class="fa-solid fa-chevron-down"></i>
+                </p>
+
+                {{else}}
+                <a class="navbar-link" href="/login">Login</a>
+                {{end}}
+            </div>
+            {{if .User.UserId}}
+            <div id="profile-menu" class="profile-menu">
+                <a href="/" class="navbar-link profile-item">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+                <a href="/dashboard" class="navbar-link profile-item">
+                    <i class="fa-solid fa-cog"></i>
+                    Dashboard
+                </a>
+                <hr>
+                <a href="/logout" class="navbar-link profile-item danger">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</div>
+
+{{end}}

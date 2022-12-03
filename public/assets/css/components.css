@@ -1,0 +1,34 @@
+/* BUTTONS */
+button {
+    padding: 15px 35px;
+    border-radius: 10px;
+    border: none !important;
+    outline: none !important;
+    color: white;
+    transition: .2s ease;
+    font-size: 16px !important;
+    font-family: var(--theme-font) !important;
+    cursor: pointer;
+}
+
+button.primary {
+    background: linear-gradient(to right, var(--theme-primary), var(--theme-primary-dark));
+}
+
+button:hover {
+    filter: brightness(0.65);
+}
+
+button:active {
+    transform: scale(1.25);
+    filter: brightness(0.85);
+}
+/* END BUTTONS */
+
+
+
+/* LINKS */
+a {
+    text-decoration: none !important;
+}
+/* END LINKS */

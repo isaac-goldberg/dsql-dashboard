@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html>
-{{block "header" .}}{{end}}
+
+<head>
+    {{block "header" .}}{{end}}
+</head>
 
 <body>
-    <div class="text-center">
-        <h1 class="display-3 mt-5">DSQL</h1>
+    {{block "navbar" .}}{{end}}
 
-        {{if .User.UserId}}
-        <p>username: {{.User.Username}}</p>
-        {{else}}
-        <a href="/login"></a>
-        {{end}}
+    <div style="text-align: center; margin: 125px 50px 0 50px;">
+        <div style="text-align: left; max-width: 700px;">
+            <h1 style="font-weight: 700; margin-bottom: 20px;">Next-level Discord server management.</h1>
+            <p style="color: var(--theme-text-secondary); line-height: 30px; font-size: 20px">The first and most
+                advanced Discord query language and bot
+                client available, for free, across all of Discord. Almost 100% coverage of server-related
+                Discord API components, with more being added all the time.</p>
+
+            <div style="margin-top: 50px">
+                {{if .User.UserId}}
+                <a href="/dashboard"><button class="button primary">Go to Dashboard</button></a>
+                {{else}}
+                <a href="/login"><button class="button primary">
+                    <i class="fa-brands fa-discord"></i>
+                    Login with Discord</button></a>
+                {{end}}
+            </div>
+        </div>
     </div>
 </body>
 
